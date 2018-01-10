@@ -6,6 +6,7 @@ import { NavComponent } from './nav.component';
   imports: [
     CommonModule
   ],
-  declarations: [NavComponent]
+  declarations: [NavComponent],
+  exports: [NavComponent]
 })
 export class NavModule { }

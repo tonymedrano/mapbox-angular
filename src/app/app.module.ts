@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 
 import { AppComponent } from './app.component'
+import { NavModule } from './nav/nav.module'
 import { MapModule } from './map/map.module'
+import { MapControlModule } from './map-control/map-control.module'
+
+import { MapShareService } from './share/map.share.sevice'
 
 @NgModule({
   declarations: [
@@ -10,9 +14,11 @@ import { MapModule } from './map/map.module'
 ],
   imports: [
     BrowserModule,
-    MapModule
+    NavModule,
+    MapModule,
+    MapControlModule
   ],
-  providers: [],
+  providers: [MapShareService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

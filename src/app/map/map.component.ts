@@ -1,9 +1,11 @@
-import { Component, OnInit, style } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 
 import * as mapboxgl from 'mapbox-gl'
 
 import { MapService } from './map.service'
 import { GeoJson } from './map'
+
+import { MapShareService } from '../share/map.share.sevice'
 
 @Component({
   selector: 'map-box',
@@ -25,7 +27,7 @@ export class MapComponent implements OnInit {
   //. popup
   popup = new mapboxgl.Popup
 
-  constructor(private mapService: MapService) {
+  constructor(private mapService: MapService, private _mapShareService: MapShareService) {
     this.popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false
@@ -106,6 +108,7 @@ export class MapComponent implements OnInit {
       // When the user moves their mouse over the counties-fill layer, we'll update the filter in
       // the counties-fills-hover layer to only show the matching county, thus making a hover effect.
       this.map.on("mousemove", "county-fills", (e) => {
+        let currentEvent = e
         this.map.setFilter("county-fills-hover", ["==", "ctyua16nm", e.features[0].properties.ctyua16nm])
         this.map.getCanvas().style.cursor = 'pointer'
 
@@ -116,24 +119,19 @@ export class MapComponent implements OnInit {
         this.popup.setLngLat([long, lat])
           .setHTML(`<strong>${e.features[0].properties.ctyua16nm}</strong>`)
           .addTo(this.map)
-
-        let counties = this.map.queryRenderedFeatures(e.point, {
-          layers: ['county-fills']
-        })
-
-        if (counties.length > 0) { //.  show popup
-          document.getElementById('pd').innerHTML = `
-          <h1><strong> ${e.features[0].properties.ctyua16nm } </strong></h1>
-          <p><strong><em>Population: ${e.features[0].properties.bng_e}</strong></em></p>`
-        }
+        
+        this._mapShareService.sendMapData({
+          map: this.map,
+          event: currentEvent
+        }) //. sharing data to MapControl
       })
 
       // Reset the counties-fills-hover layer's filter when the mouse leaves the layer.
-      this.map.on("mouseleave", "county-fills", () => { //.  hide popup
+      this.map.on("mouseleave", "county-fills", () => {
         this.map.setFilter("county-fills-hover", ["==", "ctyua16nm", ""])
-        document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>'
         this.map.getCanvas().style.cursor = ''
         this.popup.remove()
+        this._mapShareService.sendMapData(null) //. sharing data to MapControl
       })
     })
   }
