@@ -1,1 +1,18 @@
-<div class="map" id="map"></div>
+<div class="map-container">
+    <div class="map" id="map"></div>
+    <div [hidden]="!isStyle">
+        <div class="map-overlay">
+            <h2>England and Wales</h2>
+            <div>
+                <p><strong>COUNTY:</strong> {{county}}</p>
+                <p><strong>DENSITY:</strong> {{population}}</p>
+            </div>
+        </div>
+        <div class="legend-map-overlay">
+            <div *ngFor="let color of colors; let i = index">
+                <span class="legend-key" [style.background]="color"></span>
+                <span>{{layers[i]}}</span>
+            </div>
+        </div>
+    </div>
+</div>

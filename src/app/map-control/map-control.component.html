@@ -1,5 +1,5 @@
-<div class='map-overlay' id='features'>
-    <div class="row">
+<div class="container">
+    <div class="row map-overlay">
         <div class="col-md-6">
             <div class="map-info">
                 <h2>Counties and Unitary Authorities in England and Wales</h2>
@@ -12,18 +12,26 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="population">
-                Hello
+            <div class="buttons">
+                <div class="button" (click)="showByPopulation()">{{popultationButtonText}}</div>
             </div>
         </div>
     </div>
-
-
-    <div class="container buttons">
-        <!--1-->
-        <div class="button" (click)="showByPopulation()">{{popultationButtonText}}</div>
-        <div class="button">Population</div>
-        <div class="button">Population</div>
-        <div class="button">Population</div>
-    </div>
+    <nav class='radio-group' (click)="mapControlActivateDesactivate($event)">
+            <span>Activate / deactive: </span>
+            <input type='checkbox' id='scrollZoom' checked='checked'>
+            <label for='scrollZoom'>Scroll zoom</label>
+            <input type='checkbox' id='boxZoom' checked='checked'>
+            <label for='boxZoom'>Box zoom</label>
+            <input type='checkbox' id='dragRotate' checked='checked'>
+            <label for='dragRotate'>Drag rotate</label> 
+            <input type='checkbox' id='dragPan' checked='checked'>
+            <label for='dragPan'>Drag pan</label>
+            <input type='checkbox' id='keyboard' checked='checked'>
+            <label for='keyboard'>Keyboard</label>
+            <input type='checkbox' id='doubleClickZoom' checked='checked'>
+            <label for='doubleClickZoom'>Double click zoom</label>
+            <input type='checkbox' id='touchZoomRotate' checked='checked'>
+            <label for='touchZoomRotate'>Touch zoom rotate</label>
+        </nav>
 </div>

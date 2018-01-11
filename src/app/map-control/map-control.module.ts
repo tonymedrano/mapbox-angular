@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MapControlComponent } from './map-control.component';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { MapControlComponent } from './map-control.component'
 
 @NgModule({
   imports: [

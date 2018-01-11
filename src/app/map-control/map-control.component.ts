@@ -16,20 +16,17 @@ export class MapControlComponent implements OnInit {
 	county: string
 	population: string
 	cityMsg: string = "Hover over counties"
-	populationMsg: string = "..."
+	populationMsg: string
 	map: any
 	events: any
 	popultationButtonText: string
-	layers: Array<any> = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+']
-	colors: Array<any> = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
-
 	switchLayer: boolean = false
 
-	constructor(private _mapShareService: MapShareService, private mapService: MapService) { 
+	constructor(private _mapShareService: MapShareService, private mapService: MapService) {
 		this.popultationButtonText = "Show by Density"
 	}
 
-	ngOnInit() {		
+	ngOnInit() {
 		this.county = this.cityMsg
 		this._mapShareService.getMapData().subscribe(map => {
 			if (map.data !== null) {
@@ -43,22 +40,21 @@ export class MapControlComponent implements OnInit {
 					this.county = map.data.event.features[0].properties.ctyua16nm
 					this.population = map.data.event.features[0].properties.bng_e
 				}
-			} else {
+			} else {  //.  hide popup
 				this.county = this.cityMsg
 				this.population = null
 			}
 		})
 	}
 
-	showByPopulation() {
-		//. Get styles changed
-		this.switchLayer = ! this.switchLayer
-		if(this.switchLayer){
-			this.popultationButtonText = "Hide by Density"
-			this._mapShareService.notifyChangeComp(true)
-		} else {
-			this.popultationButtonText = "Show by Density"
-			this._mapShareService.notifyChangeComp(false)
-		}
+	showByPopulation() { //. Notify change to Map Comp - this.changeMapStyle()
+		this._mapShareService.notifyChangeComp(false)
+		this.switchLayer = !this.switchLayer
+		if (this.switchLayer) this.popultationButtonText = "Show by County"
+		else this.popultationButtonText = "Show by Density"
+	}
+
+	mapControlActivateDesactivate(e) {  //. Notify change to Map Comp - this.activateDeactivateMapactions()
+		this._mapShareService.sendMapControl(e)
 	}
 }

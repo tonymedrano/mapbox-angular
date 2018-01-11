@@ -5,6 +5,7 @@ import 'rxjs/Rx'
 
 import { MapControlComponent } from './map-control.component'
 import { MapShareService } from '../share/map.share.sevice'
+import { MapService } from '../map/map.service'
 
 describe('MapControlComponent', () => {
 	let component: MapControlComponent
@@ -15,7 +16,8 @@ describe('MapControlComponent', () => {
 			imports: [HttpModule],
 			providers: [
 				MapControlComponent,
-				MapShareService
+				MapShareService,
+				MapService
 			]
 		})
 	})
