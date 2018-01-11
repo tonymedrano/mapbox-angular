@@ -33,7 +33,6 @@ export class MapComponent implements OnInit {
   popup: any = new mapboxgl.Popup
 
   isStyle: boolean = false //. If styles is for default or population
-  isZoomCtrl: boolean = false  //. If zoom to show or hide
   private subscription: Subscription
 
   layers: Array<any>
