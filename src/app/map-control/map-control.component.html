@@ -1,11 +1,29 @@
 <div class='map-overlay' id='features'>
-    <h2>Counties and Unitary Authorities in England and Wales</h2>
-    <div>
-        <h1>
-            <strong>County: {{county}}</strong>
-        </h1>
-        <p>
-            <strong *ngIf="population">Population: {{population}}</strong>
-        </p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="map-info">
+                <h2>Counties and Unitary Authorities in England and Wales</h2>
+                <h1>
+                    <strong>County: {{county}}</strong>
+                </h1>
+                <p>
+                    <strong *ngIf="population">Population: {{population}}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="population">
+                Hello
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container buttons">
+        <!--1-->
+        <div class="button" (click)="showByPopulation()">{{popultationButtonText}}</div>
+        <div class="button">Population</div>
+        <div class="button">Population</div>
+        <div class="button">Population</div>
     </div>
 </div>
