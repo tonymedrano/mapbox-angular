@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import * as mapboxgl from 'mapbox-gl'
 
 import { MapService } from '../map/map.service'
-import { GeoJson } from '../map/map'
-
 import { MapShareService } from '../share/map.share.sevice'
 
 @Component({
