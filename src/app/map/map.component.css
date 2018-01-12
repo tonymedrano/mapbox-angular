@@ -63,10 +63,15 @@
     width: 150px;
 }
 
+.legend-map-overlay span {
+    font-size: 12px;
+}
+
 .legend-key {
     display: inline-block;
     border-radius: 20%;
     width: 10px;
     height: 10px;
     margin-right: 5px;
+    font-size: 12px;
 }

@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
   map: mapboxgl.Map
   style: string
   styleDefault: string = 'mapbox://styles/mapbox/outdoors-v9'
-  stylePopulation: string = 'mapbox://styles/tonymedrano/cjc9vt1h505x22snt5gfsy3hf'
+  stylePopulation: string = 'mapbox://styles/tonymedrano/cjcadus510mqd2sntnetc622v'
   lat: number = 52.64306344
   lng: number = -0.96679687
   zoom: number = 5.5
@@ -47,7 +47,7 @@ export class MapComponent implements OnInit {
     this.style = this.styleDefault //. Setting map default style
     //. Legend data content
     this.colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
-    this.layers = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+']
+    this.layers = ['0-10000', '10000-20000', '20000-50000', '50000-100000', '100000-200000', '200000-500000', '500000-1000000', '2000000+']
     //. Initial text
     this.county = "Hover over a county"
     this.population = "..."
