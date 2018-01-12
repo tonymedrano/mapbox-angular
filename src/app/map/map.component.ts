@@ -47,7 +47,7 @@ export class MapComponent implements OnInit {
     this.style = this.styleDefault //. Setting map default style
     //. Legend data content
     this.colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
-    this.layers = ['0-10000', '10000-20000', '20000-50000', '50000-100000', '100000-200000', '200000-500000', '500000-1000000', '2000000+']
+    this.layers = ['0-10000', '10000-20000', '20000-50000', '50000-100000', '100000-200000', '200000-500000', '500000-1000000', '1000000+']
     //. Initial text
     this.county = "Hover over a county"
     this.population = "..."
